@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="api_test" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">onchain.hyperpay.online</stringProp>
+            <stringProp name="Argument.desc">环境url</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">端口</stringProp>
+            <stringProp name="Argument.desc">80</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="accept" elementType="Header">
+            <stringProp name="Header.name">accept</stringProp>
+            <stringProp name="Header.value">*/*</stringProp>
+          </elementProp>
+          <elementProp name="content-type" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+          </elementProp>
+          <elementProp name="cookie" elementType="Header">
+            <stringProp name="Header.name">cookie</stringProp>
+            <stringProp name="Header.value">SERVERID=d331ed2f28a29ebf39c578da4d26f8b0|1650595778|1650595763</stringProp>
+          </elementProp>
+          <elementProp name="cookie" elementType="Header">
+            <stringProp name="Header.name">cookie</stringProp>
+            <stringProp name="Header.value">lang=zh-cn</stringProp>
+          </elementProp>
+          <elementProp name="cookie" elementType="Header">
+            <stringProp name="Header.name">cookie</stringProp>
+            <stringProp name="Header.value">aliyungf_tc=8fea4dd34d94bd3d4a366458b0ea9b96bad38643b754a76b49d1c79fbf1050c2</stringProp>
+          </elementProp>
+          <elementProp name="cookie" elementType="Header">
+            <stringProp name="Header.name">cookie</stringProp>
+            <stringProp name="Header.value">acw_tc=aa21180616505948122958163e6725d4d7e30e9cc5b7a2eae7b3da55e8604a</stringProp>
+          </elementProp>
+          <elementProp name="cookie" elementType="Header">
+            <stringProp name="Header.name">cookie</stringProp>
+            <stringProp name="Header.value">admin_lang=zh-cn</stringProp>
+          </elementProp>
+          <elementProp name="accept-encoding" elementType="Header">
+            <stringProp name="Header.name">accept-encoding</stringProp>
+            <stringProp name="Header.value">gzip, deflate, br</stringProp>
+          </elementProp>
+          <elementProp name="user-agent" elementType="Header">
+            <stringProp name="Header.name">user-agent</stringProp>
+            <stringProp name="Header.value">HyperPay/4.1.32 (iPhone; iOS 15.4.1; Scale/2.00)</stringProp>
+          </elementProp>
+          <elementProp name="accept-language" elementType="Header">
+            <stringProp name="Header.name">accept-language</stringProp>
+            <stringProp name="Header.value">zh-Hans-CN;q=1</stringProp>
+          </elementProp>
+          <elementProp name="content-length" elementType="Header">
+            <stringProp name="Header.name">content-length</stringProp>
+            <stringProp name="Header.value">1355</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="hyperper" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell 预处理程序" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script"></stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="coin_by_addres首页刷新" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">coin_address_arr=jUdbsyLphjx9BsXF3ktWSioj7i9jwmjuCuzL3IKytX%2BkS2V4xZ36KJquV7mofkK3iwJHj0HqAHuR5Ec7WAhPdiQeqxZBWsuSEXl7uxlDv4BmoutECITrpo%2Fjsp3RxhrvC33gzuCn7WiNXtthsvLPJFYUVzWm4MQU%2F1Or4cGEZ2c%3D%3Bq8o3N%2BqPbs483zfhouDcc9E%2FaBBp3RczAkI2bsWlB6dYIArWGrPvIilBNWos850GykipZ%2BksW2%2F5Kt612kArX%2Bn8pIovyod88%2BsGiMPvFTJUBGWxPFKeBkBTwC7fzGDIDyeLCCx7zea24JYmwpCqbjdaQ3lazECZWpC6QOPTKtw%3D%3BnsXLM47JS0nhA2u3ip59IogB4FLK65JlZht3ffbuZEF4mLcjguMYNI3uEgknqorG7iOZ0O21i9RbNfhM15Rsoi88RpB4hLXEoqatlE65xWxclW69mKGcC09xSJlclzXGJgm079BdwRzvlOnUhKT5EtQxX0%2FXO8GANFka0%2F7X3kY%3D%3BRklBhsAyZJQW7%2BmMF6VLNJhi77VcQQPCycPQGEEfIq%2BBEICxni5WTYUIKGkXxYz69XmxVRRIK4EomS0oXQvx945ihh6IY5D8j7kEDNrITm4stXkFyuYv1pO0qgybLy4e6pF8zLSaKhvcPNh1P6K7PflRnTlOnUS%2BSlyH8QBqMTs%3D%3BGnrmXQcoSSOdpu30xfwh5wQ0foa60bbox4Cp4%2BB8mhA6sfzBgrOribf06eRv7c%2B8lWq7cSCC3qJAOv22uyvMCsS%2Bf3%2BJ%2FJOcvbrViFt8vbwSbD5tkap8ykZgu4rE7iGBJOBMgp2aDwFKIhXs9qROmKQ2rEqJCDSt6fXUNskRNNs%3D%3BO%2B4baiHo0muCcUE8Txd9wSCc3%2Fx2wOsd18OzR1CqED9GBX9cBUuA0ygof9SejGwFWp9n%2FuJZ4IolR0J7bNmMAPLPLjn8DP7STHO7xq4ioQeF202z9BMtnm8uj%2FRKMwC47m6W8w4mEnr0Ibiy4hMigyW28QPQhmOaubMA0murPoY%3D%3BlQ%2FnGOj2iX5Z7h2hTyba3%2FJkD7MaWAMNPc%2FeR9NEOGGA%2FPxQ87PVWC5UlwgvYlJ1sFeM6uNYQrMJJjeebOvx59azhnvTah5ZpfBYp11W0Ve50oTs%2Fi%2FWP9aRu9PIpRzIbJ7XqoyRhA17dESwmueCjC6KHU119FmsddNOGDjAXew%3D%3BEcMZ9dJNpEDRxK5%2Bw7H2vCMWzb0yYp5bC4q%2F2eeFmzU4SrzUGkkkCHIFSiUfjOYJbuVbpFPSkSSSSsC9%2BudwGkHE4kdBOiJRV2xgvig0%2FQNv20tAE%2F0IHCm8y22ovMizxTVoGihgrrln89GIxAyG%2Bx%2FxmyG5MaP3sIloJSvmyXk%3D%3BmMjhTVeTCNmmZN1iLAbTOjcmX7BywGeegOk18KPSFseQqDvpUMqqnluHPSl7rfcwE31Z4Lb6QQO%2FJWaEgsAV7DhklbGl7yp9n9ST1Hg6j9ysXEFhcx2i1%2BVGr2zdt25YuMk0om1YyqalNZQRW43WMldKeuuenVU0AOvrEDxH2fo%3D&amp;currency=DatTw4rV5CZrMIa1iiPjBgGPFpFS9%2FyBRaBh0PLC4jbeXeLsUt4IaG2YBHvZ3qEYS%2FcIut5Y6BnYDO%2BOeJb1ChmhS%2BgnNNnodjgNoxjUJWRNBb4LZCXWpn%2F77PtOcoaz6MvLwORX%2FKfwPhquQ3t81Gyq%2FINm5HfU4boF6I4T%2BTo%3D&amp;device=fS%2B6QLnCoGkz7YqoTkW5kz%2BLVnL1Zqc9m3HM1RhNSO4kwvBw1BN%2Fprj3NaH%2F1nEjZZ2UG8OEtowQE1SiphbakRPLi0zn2kvJ%2FrJoCwXvL4unYP5XcytEFX1eG08dcKMUvDOk9nTibclsNTMdz%2F%2BGCLvtSHCtSgEwWid%2FcmJ6huM%3D&amp;is_store=uWQ77em6y4K1Z96kKy9t97nW53tMXmkDTTsHQmlHX5GSAZITeppn7IKTqKikqcCSXNeqTPBoJRt9zO7L42tdruxxNEiTFLEjaBzGlRqKoTwwRzkNCQYXMb%2FB910Oa7a6VCwN6b%2F9IW2KO%2BkRBqbL%2FLgsCHejld0FZu9kJf9q1Vw%3D&amp;isfrom=Wy5Z1CbJCiWBvFFC%2FM%2BjFh%2FfoxjJXaCuqs0%2FFTjSLoh74IeCUufWDOPG4G52OmEHxiQlf0tnE0jqObLcavXNW7CjnrNGuuW1%2BknYDZxd69gHWaTKqBzaEVTkR8dyzilM0Fi9ry0QW2v%2F9lvN8fJZyJnoOtHAEY91Dn4VQJXtOHc%3D&amp;udid=wRlZrD8xe6z43sIWSxMgR0z310zZEcslHMY7RPwBKHezvcm%2ByKCpyxXk4HUR3ckbM4GzkS1ZCEOrsSIzY7hethW%2BJHXYdGri5Pw2lq8IgQWoBSot66%2Bzx34y%2BLUxz7JXx5igrQ%2FpMdiMUoFstBu6K1B2TTfMkzI1%2FCY2EtxI8N4%3D&amp;version=A%2F5EnLVFnua4ect7EuaVtWGtIXXL9FnNb5cJhFD1gFI9bAeC8VpwjzSQz5oqwl97wE%2BFd%2FZU9Gq2AkoO2dyDSiXqLVDeqb%2FuL4ohAN8JnOSz1Ed5v2d5ITv6bqGTrTpaCRfpKJx17edMDMJJMPU9AEPjTVNY8Z65dMn3j4xsnoU%3D</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${host}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">app/upgrade/coin_by_address?lang=zh-cn</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="app/btc_assets_BTC余额查询" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">address=G3ADh%2BVpJOIBAIO19n9E3klK2WteJ%2B6fMDpFllDjTzdCoRXgtgAl4T%2F4jVdeXj6NrFJb3MtMlNzhA4HSF%2BwYAGwFB7yn3zF9Spujn59IjluNSUhREUSqyaC30i22mKemoKGBd6eyDgoNLl%2BRJGgkn%2B1Mz80NDCh4XPzcTV%2Bssq8%3D&amp;coin=gQWm8uuYRqx%2B4znMmB3fFmDYVhA6ZItEOfOBHcxlVsydY1FssvF5MaFGDB1LsQzM%2BjyBZtCj0X%2FOOcVgogRAbeofWHKPNwsEcZ7TvIeaEkmR3D987FBKHHLqZy32A1rlmY23wlLBVVw8pWqPf2%2BO84ALPgJcZgzHfMaOKq%2FrLOI%3D&amp;currency=h4e56oBjKnFu7EVYiXUCp%2BhBknPC3rKDK4NutCSe4xRb9e%2FhqVjAnjOi%2Fe2UvRjYYIRASwAXgw4WaThBCKqLC6%2Fa7XKkIqxBn6UX65l3SZw5FXFadOOutXfmHBBUT2Lfqy70OU3Ew4zHnN47ggjsD7OK%2FPuvVTJwsdQ0VyexcPU%3D&amp;device=GVx4onhKIjmwNdxq6MabtB65eieAkICql76G6QYgkdcmWiKTGaKWMPv4rVxbv2XwrFLBn3wawcW5GTL%2BreJWpgFlxrgkVDaRKr02vFEbQuDH%2F7Q9BlrmOAyHnXa1wpo2U6i1djcXbz4ZXTcSGwMvzCrjTigcGEUmQxLsm3LHO7A%3D&amp;is_store=AgKaiH%2BmF%2BE99EqOlY1kDJ6mJ37raF5ua9xWKV5VSiWUS4D2zBtNGjBT%2FEACEgFMqqriYWpQ0%2FXEseiclr%2FqPaaRBOW4rNq3qbOE9TkCiBVf6MptgObXV%2B4kU%2F9%2BVAYY511PjDetPl0xTV1JuMg2AIJUU7sDbPEEZ%2FbBg1vmk68%3D&amp;udid=LADvVkWQ1J%2F1a4NosjzHRWpxv02U6jb70%2F%2BFNpgpj2sXpjWVMkkOKXtlJmx4AI%2FIIxfp29G6V8U4MHqLkF5LXFIRdM4TWAAJKCrYkWKla2lDLfjZ%2BiUZQDyFUwbb%2F9CDLXlDKWJPO97eBfLGcoEN764hnTMNGLafvpLoWgop56k%3D&amp;version=goq3TSCgaoD5xfWNX5BN0yKiGQY7JTKZ%2BuZ5BYzHrVoI4eG6CRnRxfwFAR6VbTIPRSHaOBxX2o5clmet9V9rLr6kigIObnAhPL6gqrL%2F3FWLdjUpevlDqIyOvHyz8JnKq4i%2BMglaZHgGGn6eV%2B9Odu3Ikld%2BsC9LkFLx%2Bt5Lsys%3D</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${host}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">app/btc_assets?lang=zh-cn</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
